@@ -182,7 +182,7 @@
 				this.nowRegionName = regionName;
 				this.openList();
 				this.openListBg();
-				location.reload();
+				this.$store.dispatch(`regionSave`, regionTextId);
 			},
 			searchRegions(event) {
 				this.textSearch = event.target.value.toLowerCase();

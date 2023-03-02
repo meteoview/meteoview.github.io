@@ -63,7 +63,7 @@
 
 .page-link-container:hover {
 	cursor: pointer;
-	font-size: 19px;
+	font-weight: 600;
 }
 
 .page-button-container {
@@ -371,7 +371,7 @@
 }
 
 .active {
-	font-size: 19px;
+	font-weight: 600;
 }
 
 @media (max-width: 320px) {

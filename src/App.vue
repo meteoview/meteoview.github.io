@@ -15,18 +15,27 @@
 		components: {
 			PageHeader
 		},
+		watch: {
+			async region() {
+				await this.getWeather();
+			}
+		},
 		computed: {
 			isShow() {
 				return this.$route.name === 'clothes' || this.$route.name === 'main';
+			},
+			region () {
+				return this.$store.getters.regionNow;
 			}
 		},
 		mounted() {
-			this.getWeather();
+			this.setCity();
+			//this.getWeather();
 		},
 		methods: {
 			async getWeather() {
 				let apiKey = `d7ec45e86dfa9106e508bf8492569f9e`;
-				let city = this.setCity();
+				let city = this.$store.getters.regionNow;
 				let url = `https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${apiKey}&q=${city}`;
 				await axios.get(url).then(res => {
 					let lastPush;
@@ -39,32 +48,30 @@
 					let oneDayPartTimeTempSumTwo = 0;
 					let oneDayPartTimeTempOnTwo = 0;
 
+					const week = ["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
+					const month = [
+						"января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"
+					];
+					const weather = {
+						'01': `Ясное небо`,
+						'02': `Малооблачно`,
+						'03': `Облачно`,
+						'04': `Пасмурно`,
+						'09': `Морось`,
+						'10': `Дождь`,
+						'11': `Гроза`,
+						'13': `Снег`,
+						'50': `Туман`,
+					};	
+
+					const weatherList = [];
+					const hoursList = [];
+					const clothesList = [];
+
 					for(let i = 0; i < res.data.list.length; i++) {
-						let weekDayName = String(new Date(res.data.list[i].dt_txt.slice(0, 10)).getDay());
+						const weekDayName = week[new Date(res.data.list[i].dt_txt.slice(0, 10)).getDay()];
+						const monthName = month[Number(res.data.list[i].dt_txt.slice(5, 7))-1];
 
-						weekDayName = weekDayName.replaceAll("0", "Воскресенье");
-						weekDayName = weekDayName.replaceAll("1", "Понедельник");
-						weekDayName = weekDayName.replaceAll("2", "Вторник");
-						weekDayName = weekDayName.replaceAll("3", "Среда");
-						weekDayName = weekDayName.replaceAll("4", "Четверг");
-						weekDayName = weekDayName.replaceAll("5", "Пятница");
-						weekDayName = weekDayName.replaceAll("6", "Суббота");
-
-						let monthName = res.data.list[i].dt_txt.slice(5, 7);
-
-						monthName = monthName.replaceAll("01", "января");
-						monthName = monthName.replaceAll("02", "февраля");
-						monthName = monthName.replaceAll("03", "марта");
-						monthName = monthName.replaceAll("04", "апреля");
-						monthName = monthName.replaceAll("05", "мая");
-						monthName = monthName.replaceAll("06", "июня");
-						monthName = monthName.replaceAll("07", "июля");
-						monthName = monthName.replaceAll("08", "августа");
-						monthName = monthName.replaceAll("09", "сентября");
-						monthName = monthName.replaceAll("10", "октября");
-						monthName = monthName.replaceAll("11", "ноября");
-						monthName = monthName.replaceAll("12", "декабря");
-						
 						let oneDay = {
 							dayData: {
 								weekDay: weekDayName,
@@ -83,18 +90,7 @@
 							if(!morning || !day || !noon || !night) {
 								for(let j = 0; j < res.data.list.length; j++) {
 									if(res.data.list[j].dt_txt.slice(0, 10) == res.data.list[i].dt_txt.slice(0, 10)) {
-										let weatherText = res.data.list[j].weather[0].icon.slice(0, 2);
-
-										weatherText = weatherText.replaceAll(`01`, `Ясное небо`);
-										weatherText = weatherText.replaceAll(`02`, `Малооблачно`);
-										weatherText = weatherText.replaceAll(`03`, `Облачно`);
-										weatherText = weatherText.replaceAll(`04`, `Пасмурно`);
-										weatherText = weatherText.replaceAll(`09`, `Морось`);
-										weatherText = weatherText.replaceAll(`10`, `Дождь`);
-										weatherText = weatherText.replaceAll(`11`, `Гроза`);
-										weatherText = weatherText.replaceAll(`13`, `Снег`);
-										weatherText = weatherText.replaceAll(`50`, `Туман`);
-
+										const weatherText = weather[res.data.list[j].weather[0].icon.slice(0, 2)];
 										let correctWeatherIcon = 'https://openweathermap.org/img/wn/' + res.data.list[j].weather[0].icon.slice(0, 2) + 'd@4x.png';
 
 										let nowTime = res.data.list[j].dt_txt.slice(11, 16);
@@ -284,8 +280,8 @@
 									}
 								}
 							}
-
-							this.$store.dispatch(`weatherList`, oneDay);
+							weatherList.push(oneDay);
+							
 						}
 
 						lastPush = res.data.list[i].dt_txt.slice(0, 10);
@@ -304,20 +300,10 @@
 							dayDate: res.data.list[i].dt_txt.slice(0, 10)
 						};
 
-						this.$store.dispatch(`hoursList`, oneHour);
+						hoursList.push(oneHour);
 
 						if(!oneDayPart) {
-							let weatherText = res.data.list[i].weather[0].icon.slice(0, 2);
-
-							weatherText = weatherText.replaceAll(`01`, `Ясное небо`);
-							weatherText = weatherText.replaceAll(`02`, `Малооблачно`);
-							weatherText = weatherText.replaceAll(`03`, `Облачно`);
-							weatherText = weatherText.replaceAll(`04`, `Пасмурно`);
-							weatherText = weatherText.replaceAll(`09`, `Морось`);
-							weatherText = weatherText.replaceAll(`10`, `Дождь`);
-							weatherText = weatherText.replaceAll(`11`, `Гроза`);
-							weatherText = weatherText.replaceAll(`13`, `Снег`);
-							weatherText = weatherText.replaceAll(`50`, `Туман`);
+							const weatherText = weather[res.data.list[i].weather[0].icon.slice(0, 2)];
 
 							let nowTime = res.data.list[i].dt_txt.slice(11, 16);
 
@@ -420,7 +406,7 @@
 										descriptionTemplate.imageUrl.push(`winter-showes.png`);
 									}
 
-									this.$store.dispatch(`clothesList`, descriptionTemplate);
+									clothesList.push(descriptionTemplate);
 
 									oneDayPart = true;
 								}
@@ -428,17 +414,7 @@
 						}
 
 						if(!twoDayPart) {
-							let weatherText = res.data.list[i].weather[0].icon.slice(0, 2);
-
-							weatherText = weatherText.replaceAll(`01`, `Ясное небо`);
-							weatherText = weatherText.replaceAll(`02`, `Малооблачно`);
-							weatherText = weatherText.replaceAll(`03`, `Облачно`);
-							weatherText = weatherText.replaceAll(`04`, `Пасмурно`);
-							weatherText = weatherText.replaceAll(`09`, `Морось`);
-							weatherText = weatherText.replaceAll(`10`, `Дождь`);
-							weatherText = weatherText.replaceAll(`11`, `Гроза`);
-							weatherText = weatherText.replaceAll(`13`, `Снег`);
-							weatherText = weatherText.replaceAll(`50`, `Туман`);
+							const weatherText = weather[res.data.list[i].weather[0].icon.slice(0, 2)];
 
 							let nowTime = res.data.list[i].dt_txt.slice(11, 16);
 
@@ -540,23 +516,26 @@
 										descriptionTemplate.imageUrl.push(`podjeance.png`);
 										descriptionTemplate.imageUrl.push(`winter-showes.png`);
 									}
-
-									this.$store.dispatch(`clothesList`, descriptionTemplate);
+									clothesList.push(descriptionTemplate);
+									
 
 									twoDayPart = true;
 								}
 							}
 						}
+						
 					}
+					this.$store.dispatch(`hoursList`, hoursList);
+					this.$store.dispatch(`weatherList`, weatherList);
+					this.$store.dispatch(`clothesList`, clothesList);
 				})
 			},
 			setCity() {
 				if(localStorage.getItem(`setCity`) == null) {
 					localStorage.setItem(`setCity`, `Samarskaya Oblast`);
 					localStorage.setItem(`cityName`, `Самарская обл.`);
-				}
-
-				return localStorage.getItem(`setCity`);
+				} else 
+					this.$store.dispatch(`regionSave`, localStorage.getItem(`setCity`));
 			}
 		}
 	}

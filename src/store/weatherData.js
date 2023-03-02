@@ -2,17 +2,21 @@ export default {
 	state: {
 		daysList: [],
 		hoursList: [],
-		clothesList: []
+		clothesList: [],
+		regionNow: ``
 	},
 	mutations: {
 		weatherList(state, payload) {
-			state.daysList.push(payload);
+			state.daysList = payload;
 		},
 		hoursList(state, payload) {
-			state.hoursList.push(payload);
+			state.hoursList = payload;
 		},
 		clothesList(state, payload) {
-			state.clothesList.push(payload);
+			state.clothesList = payload;
+		},
+		regionNow(state, payload) {
+			state.regionNow = payload;
 		}
 	},
 	actions: {
@@ -24,6 +28,9 @@ export default {
 		},
 		clothesList ({commit}, payload) {
 			commit('clothesList', payload);
+		},
+		regionSave ({commit}, payload) {
+			commit('regionNow', payload);
 		}
 	},
 	getters: {
@@ -35,6 +42,9 @@ export default {
 		},
 		nowClothes(state) {
 			return state.clothesList;
+		},
+		regionNow(state) {
+			return state.regionNow;
 		}
 	}
 }
