@@ -363,7 +363,7 @@
 									lastWeatherTextOne != `Дождь` &&
 									lastWeatherTextOne != `Морось`
 								) {
-									descriptionTemplate.descriptionTwo = `Следует одется потеплее, потому что пойдет снег.`;
+									descriptionTemplate.descriptionTwo = `Следует одеться потеплее, потому что пойдет снег.`;
 								} else if (
 									weatherText == `Туман` &&
 									lastWeatherTextOne != `Гроза` &&
@@ -382,7 +382,7 @@
 									descriptionTemplate.tempDescription = `Температура воздуха будет ${endTempOne}°C.`;
 
 									if(endTempOne > 25) {
-										descriptionTemplate.descriptionOne = `Стоит надеть легкую однослойную одежду (футболку и шорты или юбку).`;
+										descriptionTemplate.descriptionOne = `Стоит надеть лёгкую однослойную одежду (футболку и шорты или юбку).`;
 										descriptionTemplate.imageUrl.push(`t-shirt.png`);
 										descriptionTemplate.imageUrl.push(`shorts.png`);
 										descriptionTemplate.imageUrl.push(`showes.png`);
@@ -400,7 +400,7 @@
 										descriptionTemplate.imageUrl.push(`jeance.png`);
 										descriptionTemplate.imageUrl.push(`winter-showes.png`);
 									} else if(endTempOne <= 5 && endTempOne > -15) {
-										descriptionTemplate.descriptionOne = `Следует надеть трёхслойную одежду (термобельё, теплые штаны, зимнюю куртку и обувь). Под куртку нужно надеть толстовку. Не забудьте шапку!`;
+										descriptionTemplate.descriptionOne = `Следует надеть трёхслойную одежду (термобельё, тёплые штаны, зимнюю куртку и обувь). Под куртку нужно надеть толстовку. Не забудьте шапку!`;
 										descriptionTemplate.imageUrl.push(`shapka.png`);
 										descriptionTemplate.imageUrl.push(`kurtka.png`);
 										descriptionTemplate.imageUrl.push(`tolstovka.png`);
@@ -409,7 +409,7 @@
 										descriptionTemplate.imageUrl.push(`podjeance.png`);
 										descriptionTemplate.imageUrl.push(`winter-showes.png`);
 									} else if(endTempOne <= -15) {
-										descriptionTemplate.descriptionOne = `Обязательно наденьте четырёхслойную одежду (термобельё, теплые штаны, зимнюю куртку, свитер и кофту). Варежки и шапка тоже нужны.`;
+										descriptionTemplate.descriptionOne = `Обязательно наденьте четырёхслойную одежду (термобельё, тёплые штаны, зимнюю куртку, свитер и кофту). Варежки и шапка тоже нужны.`;
 										descriptionTemplate.imageUrl.push(`shapka.png`);
 										descriptionTemplate.imageUrl.push(`kurtka.png`);
 										descriptionTemplate.imageUrl.push(`tolstovka.png`);
@@ -484,7 +484,7 @@
 									lastWeatherTextOne != `Дождь` &&
 									lastWeatherTextOne != `Морось`
 								) {
-									descriptionTemplate.descriptionTwo = `Следует одется потеплее, потому что пойдет снег.`;
+									descriptionTemplate.descriptionTwo = `Следует одеться потеплее, потому что пойдет снег.`;
 								} else if (
 									weatherText == `Туман` &&
 									lastWeatherTextOne != `Гроза` &&
@@ -503,7 +503,7 @@
 									descriptionTemplate.tempDescription = `Температура воздуха будет ${endTempOne}°C.`;
 
 									if(endTempOne > 25) {
-										descriptionTemplate.descriptionOne = `Стоит надеть легкую однослойную одежду (футболку и шорты или юбку).`;
+										descriptionTemplate.descriptionOne = `Стоит надеть лёгкую однослойную одежду (футболку и шорты или юбку).`;
 										descriptionTemplate.imageUrl.push(`t-shirt.png`);
 										descriptionTemplate.imageUrl.push(`shorts.png`);
 										descriptionTemplate.imageUrl.push(`showes.png`);
@@ -521,7 +521,7 @@
 										descriptionTemplate.imageUrl.push(`jeance.png`);
 										descriptionTemplate.imageUrl.push(`winter-showes.png`);
 									} else if(endTempOne <= 5 && endTempOne > -15) {
-										descriptionTemplate.descriptionOne = `Следует надеть трёхслойную одежду (термобельё, теплые штаны, зимнюю куртку и обувь). Под куртку нужно надеть толстовку. Не забудьте шапку!`;
+										descriptionTemplate.descriptionOne = `Следует надеть трёхслойную одежду (термобельё, тёплые штаны, зимнюю куртку и обувь). Под куртку нужно надеть толстовку. Не забудьте шапку!`;
 										descriptionTemplate.imageUrl.push(`shapka.png`);
 										descriptionTemplate.imageUrl.push(`kurtka.png`);
 										descriptionTemplate.imageUrl.push(`tolstovka.png`);
@@ -530,7 +530,7 @@
 										descriptionTemplate.imageUrl.push(`podjeance.png`);
 										descriptionTemplate.imageUrl.push(`winter-showes.png`);
 									} else if(endTempOne <= -15) {
-										descriptionTemplate.descriptionOne = `Обязательно наденьте четырёхслойную одежду (термобельё, теплые штаны, зимнюю куртку, свитер и кофту). Варежки и шапка тоже нужны.`;
+										descriptionTemplate.descriptionOne = `Обязательно наденьте четырёхслойную одежду (термобельё, тёплые штаны, зимнюю куртку, свитер и кофту). Варежки и шапка тоже нужны.`;
 										descriptionTemplate.imageUrl.push(`shapka.png`);
 										descriptionTemplate.imageUrl.push(`kurtka.png`);
 										descriptionTemplate.imageUrl.push(`tolstovka.png`);
