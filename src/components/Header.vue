@@ -37,7 +37,7 @@
 				<router-link to="/">
 					<div class="page-link-container one for-bg" :class="{'active': getActiveStateMain }">Главная</div>
 				</router-link>
-				<router-link to="/?/clothes">
+				<router-link to="/clothes">
 					<div class="page-link-container one for-bg" :class="{'active': getActiveState }">Рекомендации на сегодня</div>
 				</router-link>
 				<div class="bg-open-icon"
@@ -75,7 +75,7 @@
 			<router-link to="/">
 				<div class="page-link-container-bg" :class="{'active': getActiveStateMain }">Главная</div>
 			</router-link>
-			<router-link to="/?/clothes">
+			<router-link to="/clothes">
 				<div class="page-link-container-bg" :class="{'active': getActiveState }">Рекомендации на сегодня</div>
 			</router-link>
 		</div>
