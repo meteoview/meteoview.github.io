@@ -1,5 +1,4 @@
 # Meteo View
-____
 Сайт для отображения актуальной информации о погоде в некоторых регионах России и рекомендаций об одежде.
 
 [Ссылка на сайт](https://meteoview.github.io/) - https://meteoview.github.io/
@@ -7,7 +6,6 @@ ____
 или
 
 ## Инструкция
-____
 
 ### Установка программ для запуска сервера с сайтом на локальном компьютере
 1. Установите [Git](https://git-scm.com/) с официального сайта https://git-scm.com/
@@ -15,12 +13,12 @@ ____
 
 ### Загрузка проекта на локальный компьютер
 1. Создайте папку на любом диске
-2. Перейдите в созданную папку в программе `Git Bush`
+2. Перейдите в созданную папку в программе `Git Bash`
 Например
 ```git
 cd D:/projects/meteo-view/
 ```
-3. В программе `GitBush` напишите команду
+3. В программе `Git Bash` напишите команду
 ```git
 git clone https://github.com/meteoview/meteoview.github.io.git
 ```
@@ -29,7 +27,7 @@ git clone https://github.com/meteoview/meteoview.github.io.git
 1. Перейдите в папку с проектом в программе `Node.js command prompt`
 Например
 ```npm
-cd D:/projects/meteo-view/
+cd D:/projects/meteo-view/meteoview.github.io/
 ```
 2. Напишите
 ```npm
@@ -38,7 +36,7 @@ npm install
 3. Напишите
 
 ```npm
-npm run build
+npm run serve
 ```
 
 ### Откыть сайт
