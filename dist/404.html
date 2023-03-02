@@ -10,7 +10,9 @@
     <script>
         let pathName = document.location;
 
-        pathName.pathname = `/`;
+        let lastPathName = pathName;
+
+        pathName.pathname = `/index.html/${pathName}`;
     </script>
 </body>
 </html>
