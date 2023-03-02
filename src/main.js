@@ -12,12 +12,12 @@ const routes = [
 		component: MainPage
 	},
 	{
-		path: '/clothes',
+		path: '/?/clothes',
 		name: 'clothes',
 		component: ClothesPage
 	},
 	{
-		path: '/:pathMatch(.*)*',
+		path: '/?/:pathMatch(.*)*',
 		redirect: '/'
 	}
 ];
