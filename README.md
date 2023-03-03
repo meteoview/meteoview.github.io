@@ -4,8 +4,8 @@
 [Наш Telegram-канал со всеми материалами](https://t.me/meteoview) - https://t.me/meteoview
 
 ## Ссылки на исходный код
-[Android-приложение](https://github.com/meteoview/meteoview-mobile-app) - https://github.com/meteoview/meteoview-mobile-app
-[Сайт](https://github.com/meteoview/meteoview.github.io) - https://github.com/meteoview/meteoview.github.io
+- [Android-приложение](https://github.com/meteoview/meteoview-mobile-app) - https://github.com/meteoview/meteoview-mobile-app
+- [Сайт](https://github.com/meteoview/meteoview.github.io) - https://github.com/meteoview/meteoview.github.io
 
 ## Инструкция
 
@@ -45,7 +45,7 @@ npm install
 npm run serve
 ```
 
-### Откыть сайт
+### Открыть сайт
 1. Откройте браузер и напишите в адресной строке
 ```
 localhost
