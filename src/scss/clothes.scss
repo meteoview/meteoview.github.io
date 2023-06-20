@@ -1,23 +1,28 @@
-@import 'font';
 @import 'variables';
-@import 'mixines';
 
-* {
-	user-select: none;
+.main-content-container {
+	display: flex;
+	justify-content: center;
+}
+
+.main-content-block {
+	width: calc(100% - 96px);
+	max-width: 1344px;
+	padding: 0px 48px;
 }
 
 .clothes-container {
-	padding: 36px 64px;
+	margin-top: 26px;
 }
 
-@media (min-width: 321px) and (max-width: 768px) {
-	.clothes-container {
-		padding: 20px 34px;
+@media (max-width: 768px) {
+	.main-content-block {
+		width: calc(100% - 28px);
+		max-width: 1412px;
+		padding: 0px 14px;
 	}
-}
 
-@media (max-width: 320px) {
 	.clothes-container {
-		padding: 16px 16px;
+		margin-top: 0px;
 	}
 }

@@ -1,19 +1,31 @@
 <template>
 	<div class="today-clothes-container">
 		<div class="today-clothes-description-container">
-			<h2 class="today-clothes-day">{{ dayClothes.descriptionTime }}</h2>
+			<div class="description-time-container">
+				<h2 class="today-clothes-day-part">
+					{{ dayClothes.descriptionTitle }}
+				</h2>
+				<p class="today-clothes-time">
+					{{ dayClothes.descriptionTime }}
+				</p>
+			</div>
 			<p class="today-clothes-description">
-				{{ dayClothes.tempDescription }}
+				{{ dayClothes.temp }}
 			</p>
 			<p class="today-clothes-description">
-				{{ dayClothes.descriptionOne }}
+				{{ dayClothes.descriptionTemp }}
 			</p>
 			<p class="today-clothes-description">
-				{{ dayClothes.descriptionTwo }}
+				{{ dayClothes.descriptionWeather }}
 			</p>
 		</div>
 		<div class="clothes-images-cntainer">
-			<img :src="require('@/assets/' + item)" alt="" class="one-clothes-item" v-for="(item, index) in dayClothes.imageUrl" :key="index">
+			<img
+				class="clothes-img"
+				v-for="(item, index) in dayClothes.imageUrls"
+				:key="index"
+				:src="require('@/assets/' + item)"
+			>
 		</div>
 	</div>
 </template>

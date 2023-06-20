@@ -1,72 +1,80 @@
-@import 'font';
 @import 'variables';
-@import 'mixines';
 
-.div-table-col-string {
-	width: 162px;
+.div-table-row {
 	display: flex;
 	align-items: center;
 }
 
-.div-table-col-string-one {
-	width: 112px;
+.div-table-col-row {
+	width: 100px;
+	display: flex;
+	align-items: center;
+}
+
+.first {
+	width: 104px;
+}
+
+.third {
+	width: 226px;
 }
 
 .col-text {
-	@include text-style(18px, 400);
-}
-
-.for-little-string {
-	display: none;
-}
-
-.for-big-string {
+	color: $dark-color;
+	font-size: 16px;
 	display: flex;
-	align-items: center;
-}
-
-.temp-col {
-	width: 100px;
-}
-
-.weather-col {
-	width: 224px;
+	gap: 4px;
 }
 
 .table-weather-img {
-	height: 40px;
-	width: 40px;
+	width: 48px;
+	height: 24px;
+	object-fit: cover;
 }
 
-@media (max-width: 768px) {
-	.for-big-string {
+.temp-m {
+	display: none;
+}
+
+@media (max-width: 990px) {
+	.not-n {
 		display: none;
 	}
 
-	.for-little-string {
-		display: block;
+	.col-temp {
+		width: 62px;
 	}
 
-	.div-table-col-string {
-		width: 50px;
+	.first {
+		width: 80px;
 	}
 
-	.col-text {
-		font-size: 14px;
+	.third {
+		width: 226px;
 	}
 
-	.last-col-string {
-		width: 26px;
-	}
-
-	.div-table-col-string-one {
-		width: 40px;
+	.cell-wind {
+		width: 60px;
 	}
 }
 
-@media (max-width: 320px) {
-	.table-weather-img {
-		height: 34px;
-		width: 34px;
+@media (max-width: 768px) {
+	.not-m {
+		display: none;
+	}
+
+	.col-m {
+		display: block;
+		width: 50px;
+		min-width: 50px;
+	}
+
+	.div-table-row {
+		gap: 24px;
+		justify-content: space-between;
+	}
+
+	.temp-m {
+		display: block;
 	}
 }

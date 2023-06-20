@@ -1,13 +1,13 @@
 export default {
 	state: {
-		daysList: [],
+		weekdaysList: [],
 		hoursList: [],
 		clothesList: [],
-		regionNow: ``
+		region: ''
 	},
 	mutations: {
 		weatherList(state, payload) {
-			state.daysList = payload;
+			state.weekdaysList = payload;
 		},
 		hoursList(state, payload) {
 			state.hoursList = payload;
@@ -15,27 +15,27 @@ export default {
 		clothesList(state, payload) {
 			state.clothesList = payload;
 		},
-		regionNow(state, payload) {
-			state.regionNow = payload;
+		regionSet(state, payload) {
+			state.region = payload;
 		}
 	},
 	actions: {
-		weatherList ({commit}, payload) {
+		weatherList({commit}, payload) {
 			commit('weatherList', payload);
 		},
-		hoursList ({commit}, payload) {
+		hoursList({commit}, payload) {
 			commit('hoursList', payload);
 		},
-		clothesList ({commit}, payload) {
+		clothesList({commit}, payload) {
 			commit('clothesList', payload);
 		},
-		regionSave ({commit}, payload) {
-			commit('regionNow', payload);
+		regionSave({commit}, payload) {
+			commit('regionSet', payload);
 		}
 	},
 	getters: {
 		nowWeather(state) {
-			return state.daysList;
+			return state.weekdaysList;
 		},
 		nowHours(state) {
 			return state.hoursList;
@@ -43,8 +43,8 @@ export default {
 		nowClothes(state) {
 			return state.clothesList;
 		},
-		regionNow(state) {
-			return state.regionNow;
+		regionGet(state) {
+			return state.region;
 		}
 	}
 }

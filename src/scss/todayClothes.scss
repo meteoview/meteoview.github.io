@@ -1,103 +1,78 @@
-@import 'font';
 @import 'variables';
-@import 'mixines';
-
-* {
-	user-select: none;
-}
 
 .today-clothes-container {
 	display: flex;
-	gap: 62px;
-	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 20px;
 }
 
 .today-clothes-description-container {
-	flex: 1;
 	min-width: 480px;
+	flex: 1;
 }
 
-.today-clothes-day {
-	@include text-style(24px, 700);
+.description-time-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.today-clothes-day-part {
+	color: $dark-color;
+	font-size: 24px;
+}
+
+.today-clothes-time {
+	color: $dark-color;
+	font-size: 16px;
+	opacity: 0.78;
 }
 
 .today-clothes-description {
+	color: $dark-color;
+	font-size: 16px;
 	margin-top: 20px;
-	margin-left: 16px;
-	@include text-style(18px, 400);
 }
 
 .clothes-images-cntainer {
-	background-color: $white-color;
-	border-radius: $radius;
-	padding: 30px 10px;
-	justify-content: center;
 	flex: 1;
 	min-width: 480px;
-	min-height: 424px;
+	padding: 30px 10px;
+	background-color: unset;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
 }
 
-.one-clothes-item {
-	object-fit: cover;
-	width: 140px;
+.clothes-img {
 	height: 140px;
 }
 
-@media (max-width: 1178px) {
+@media (max-width: 768px) {
 	.today-clothes-container {
-		gap: 40px;
-		flex-wrap: wrap;
-	}
-
-	.clothes-images-cntainer {
-		width: 100%;
-	}
-
-	.today-clothes-day {
-		font-size: 20px;
-	}
-
-	.today-clothes-description {
-		font-size: 18px;
-	}
-}
-
-@media (max-width: 568px) {
-	.today-clothes-day {
-		font-size: 19px;
+		flex-direction: column;
 	}
 
 	.today-clothes-description-container {
-		min-width: 240px;
+		min-width: auto;
 	}
 
 	.clothes-images-cntainer {
-		min-width: 240px;
+		min-width: fit-content;
+		flex-direction: column;
+		align-items: center;
 	}
 
-	.today-clothes-description {
-		font-size: 17px;
-		margin-left: 0px;
-	}
-}
-
-@media (max-width: 320px) {
-	.today-clothes-day {
-		font-size: 18px;
+	.today-clothes-day-part {
+		line-height: 26px;
 	}
 
-	.today-clothes-description-container {
-		min-width: 200px;
+	.description-time-container {
+		row-gap: 4px;
 	}
 
-	.clothes-images-cntainer {
-		min-width: 200px;
-	}
-
-	.today-clothes-description {
-		font-size: 16px;
+	.clothes-img {
+		height: 120px;
 	}
 }

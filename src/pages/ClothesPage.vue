@@ -1,6 +1,8 @@
 <template>
-	<main>
-		<TodayClothes  v-for="(item, index) in clothesNow" :key="index" :dayClothes="item" class="clothes-container" />
+	<main class="main-content-container">
+		<div class="main-content-block">
+			<TodayClothes  v-for="(item, index) in clothesNow" :key="index" :dayClothes="item" class="clothes-container" />
+		</div>
 	</main>
 </template>
 	

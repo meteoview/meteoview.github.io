@@ -1,9 +1,9 @@
 import { createStore } from 'vuex';
-import weatherData from '@/store/weatherData.js';
+import storeData from '@/store/storeData.js';
 
 const store = createStore({
 	modules: {
-		weatherData
+		storeData
 	}
 })
 

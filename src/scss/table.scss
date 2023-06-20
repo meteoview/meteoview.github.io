@@ -1,172 +1,98 @@
-@import 'font';
 @import 'variables';
-@import 'mixines';
 
-* {
-	user-select: none;
+.div-day-table {
+	background-color: $blue-color;
+	border-radius: 7px;
+	padding: 0px 14px;
 }
 
-.day-table-container {
-	background-color: $white-color;
-	border-radius: 8px;
-	height: 215px;
-}
-
-.div-table {
+.div-table-row-header {
 	display: flex;
-	flex-direction: column;
-	gap: 10px;
+	border-bottom: 1px solid $dark-color;
 }
 
-.div-table-cols-container {
-	margin-left: 12px;
-	gap: 10px;
-	display: flex;
-	flex-direction: column;
-}
-
-.div-table-row {
-	height: 22px;
-	display: flex;
-}
-
-.row-header {
-	border-bottom: 1px solid $main-text-color;
-	height: 77px;
-}
-
-.div-table-col {
-	width: 162px;
-	display: flex;
-	align-items: end;
-}
-
-.div-table-col-three {
-	width: 448px;
+.div-table-col-data-day {
+	width: 436px;
 	display: flex;
 	align-items: start;
-	gap: 14px;
-}
-
-.day-weekday {
-	margin: 6px 0px 0px 12px;
-	width: 240px;
-	@include text-style(36px, 500);
-}
-
-.day-date-month {
-	display: flex;
-	align-items: start;
-}
-
-.table-day-date {
-	line-height: 77px;
-	@include text-style(64px, 400);
+	gap: 4px;
 }
 
 .table-day-month {
-	@include text-style(16px, 400);
+	color: $dark-color;
+	font-size: 48px;
 }
 
-.last-cols {
-	@include text-style(16px, 400);
-	margin-bottom: 4px;
+.day-date-month-container {
+	margin-top: 5px;
 }
 
-.last-col {
-	width: 80px;
+.day-date-month {
+	color: $dark-color;
+	font-size: 16px;
 }
 
-@media (min-width: 769px) and (max-width: 1224px) {
-	.day-table-container {
-		height: fit-content;
-		padding-bottom: 10px;
+.div-table-col {
+	width: 100px;
+	display: flex;
+	align-items: end;
+	padding-bottom: 4px;
+}
+
+.col-text {
+	color: $dark-color;
+	font-size: 16px;
+}
+
+.div-table-cols-container {
+	padding: 14px 6px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.on-m {
+	display: none;
+}
+
+.table-weekday {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.day-date-month {
+	margin-left: 8px;
+	font-weight: 400;
+}
+
+@media (max-width: 990px) {
+	.not-n {
+		display: none;
 	}
 
-	.row-header {
-		height: 46px;
+	.div-table-col-data-day {
+		width: 374px;
 	}
 
-	.day-weekday {
-		font-size: 26px;
-		margin-left: 20px;
-		margin-top: 8px;
-		width: 174px;
-	}
-
-	.day-date-month {
-		gap: 6px;
-		margin-top: 12px;
-	}
-
-	.table-day-date, .table-day-month {
-		color: #FF5151;
-		font-size: 24px;
-		line-height: 26px;
+	.col-wind {
+		width: 60px;
 	}
 }
 
 @media (max-width: 768px) {
-	.div-table-cols-container {
-		padding-left: 8px;
-	}
-
-	.row-header {
-		height: 32px;
-	}
-
-	.div-table {
-		margin: 0px 12px;
-		gap: 5px;
-	}
-
-	.day-weekday {
-		font-size: 18px;
-		margin-left: 2px;
-		margin-top: 0px;
-		width: 110px;
-	}
-
-	.day-date-month {
-		gap: 4px;
-		margin-top: 0px;
-	}
-
-	.table-day-date, .table-day-month {
-		color: #FF5151;
-		font-size: 18px;
-		line-height: 22px;
-	}
-
-	.for-little {
+	.not-m {
 		display: none;
 	}
 
-	.div-table-col-three {
-		align-items: center;
+	.on-m {
+		display: block;
 	}
 
-	.day-table-container {
-		height: 156px;
-		padding-bottom: 0px;
+	.div-day-table {
+		background-color: rgba(18, 38, 58, 0.2);
 	}
 
-	.div-table-cols-container {
-		margin-left: 0px;
-		gap: 0px;
-	}
-	
-	.div-table-row {
-		height: 28px;
-		justify-content: space-between;
-	}
-
-	.row-header {
-		height: 32px;
-	}
-
-	.last-col {
-		width: fit-content;
-		padding-right: 8px;
+	.div-table-row-header {
+		padding: 8px 6px;
 	}
 }

@@ -19,37 +19,37 @@
 
 ### Загрузка проекта на локальный компьютер
 1. Создайте папку на любом диске
-2. Перейдите в созданную папку в программе `Git Bash`
+2. Перейдите в созданную папку в программе 'Git Bash'
 Например
-```git
+'''git
 cd D:/projects/meteo-view/
-```
-3. В программе `Git Bash` напишите команду
-```git
+'''
+3. В программе 'Git Bash' напишите команду
+'''git
 git clone https://github.com/meteoview/meteoview.github.io.git
-```
+'''
 
 ### Запуск сервера
-1. Перейдите в папку с проектом в программе `Node.js command prompt`
+1. Перейдите в папку с проектом в программе 'Node.js command prompt'
 Например
-```npm
+'''npm
 cd D:/projects/meteo-view/meteoview.github.io/
-```
+'''
 2. Напишите
-```npm
+'''npm
 npm install
-```
+'''
 3. Напишите
 
-```npm
+'''npm
 npm run serve
-```
+'''
 
 ### Открыть сайт
 1. Откройте браузер и напишите в адресной строке
-```
+'''
 localhost
-```
+'''
 Или попробуйте перейти по ссылке http://localhost
 
 ## Ресурсы

@@ -1,29 +1,50 @@
 <template>
-	<main>
-		<div class="weather-container" :style="setStyle()">
-			<div class="weather-today-container">
-				<header>
-					<div class="weather-today-header">
-						<div class="header-elems-container">
-							<div class="day-date">Погода по часам на 5 дней</div>
+	<main class="main-content-container">
+		<div class="main-content-block">
+			<div class="weather-container" :style="setStyle()">
+				<div class="weather-today-container">
+					<h5 class="region-opened">{{ hoursNow.regionName }}</h5>
+					<p class="time-now">Сейчас {{ getNowTime() }}</p>
+					<div class="temp-data-container">
+						<p class="temp-now">{{ getTemp() }}° C</p>
+						<img class="weather-now-img" :src="setNowWeatherImg()" alt="">
+						<div>
+							<p class="weather-now-text">{{ getWeather() }}</p>
+							<p class="feels-now-text">Ощущается как {{ getLike() }}° C</p>
 						</div>
 					</div>
-				</header>
-				<div class="times-container">
-					<HourData v-for="(item, index) in hoursNow" :key="index" :oneHour="item" :colorText="setColorForText()" />
+					<div class="other-data-container">
+						<div class="other-data">
+							<img class="windy-img" src="@/assets/windy.svg" alt="">
+							<p class="other-data-text">{{ getWind() }} м/с, {{ getWindDir() }}</p>
+						</div>
+						<div class="other-data">
+							<img class="humidity-img" src="@/assets/humidity.svg" alt="">
+							<p class="other-data-text">{{ getHumidity() }}%</p>
+						</div>
+						<div class="other-data">
+							<img class="pressure-img" src="@/assets/pressure.svg" alt="">
+							<p class="other-data-text">{{ getPressure() }} мм рт. ст.</p>
+						</div>
+					</div>
+					<div class="weather-today-container-dark">
+						<div class="times-container">
+							<HourData v-for="(item, index) in hoursNow.times" :key="index" :oneHour="item" />
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<h2 class="week-weather">Погода на 5 дней</h2>
-		<div class="week-days-container">
-			<DayTable v-for="(item, index) in weatherNow" :key="index" :day="item" />
+			<div class="week-days-container">
+				<DayTable v-for="(item, index) in weatherNow" :key="index" :day="item" />
+			</div>
 		</div>
 	</main>
 </template>
 	
 <script>
-	import DayTable from '@/components/Table.vue';
+	import dayjs from 'dayjs';
 	import HourData from '@/components/Hour.vue';
+	import DayTable from '@/components/Table.vue';
 
 	export default {
 		name: 'MainPage',
@@ -33,7 +54,7 @@
 				handler(to) {
 					document.title = to.meta.title || 'MeteoView: главная страница';
 				}
-			}
+			},
 		},
 		components: {
 			DayTable,
@@ -48,26 +69,59 @@
 			}
 		},
 		methods: {
+			getNowTime() {
+				return dayjs().format('HH:mm');
+			},
+			getPressure() {
+				if(this.hoursNow.times != undefined) {
+					return this.hoursNow.times[0].pressure;
+				}
+			},
+			getHumidity() {
+				if(this.hoursNow.times != undefined) {
+					return this.hoursNow.times[0].humidity;
+				}
+			},
+			getWindDir() {
+				if(this.hoursNow.times != undefined) {
+					return this.hoursNow.times[0].windDirection;
+				}
+			},
+			getWind() {
+				if(this.hoursNow.times != undefined) {
+					return this.hoursNow.times[0].wind;
+				}
+			},
+			getWeather() {
+				if(this.hoursNow.times != undefined) {
+					return this.hoursNow.times[0].weather;
+				}
+			},
+			getLike() {
+				if(this.hoursNow.times != undefined) {
+					return this.hoursNow.times[0].like;
+				}
+			},
+			getTemp() {
+				if(this.hoursNow.times != undefined) {
+					return this.hoursNow.times[0].temp;
+				}
+			},
 			setStyle() {
-				if(this.hoursNow[0] != undefined) {
+				if(this.hoursNow.times != undefined) {
 					let bgStyle = {
-						background: 'url(' + require('@/assets/' + this.hoursNow[0].backgroundUrl + 'd.jpg') + ') no-repeat center center',
-						backgroundAttachment: 'fixed',
+						background: 'url(' + require('@/assets/' + this.hoursNow.times[0].weatherImg + 'd.jpg') + ') no-repeat center center',
 						backgroundSize: 'cover'
 					};
 
 					return bgStyle;
 				}
 			},
-			setColorForText() {
-				if(this.hoursNow[0] != undefined) {
-					let color = true;
+			setNowWeatherImg() {
+				if(this.hoursNow.times != undefined) {
+					let src = this.hoursNow.times[0].weatherIcon;
 
-					if(this.hoursNow[0].backgroundUrl == '02' || this.hoursNow[0].backgroundUrl == '03' || this.hoursNow[0].backgroundUrl == '50') {
-						color = false;
-					}
-
-					return color;
+					return src;
 				}
 			}
 		}
