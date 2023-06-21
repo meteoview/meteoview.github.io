@@ -7,7 +7,7 @@
 				</p>
 				<div class="day-date-month-container">
 					<p class="day-date-month">
-						{{day.dayData.dateMonth}}, <br />
+						{{getMonth()}}, <br />
 						{{day.dayData.weekDay}}
 					</p>
 				</div>
@@ -16,7 +16,7 @@
 				<p class="table-weekday">
 					{{day.dayData.weekDay}}
 					<span class="day-date-month">
-						{{day.dayData.dateDay}} {{day.dayData.dateMonth}}
+						{{day.dayData.dateDay}} {{getMonth()}}
 					</span>
 				</p>
 			</div>
@@ -57,6 +57,18 @@
 		},
 		props: {
 			day: {}
+		},
+		methods: {
+			getMonth() {
+				let month = String(this.day.dayData.dateMonth);
+
+				if(month == 'март' || month == 'август')
+					month = month + 'а'
+				else
+					month = month.substring(0, month.length - 1) + 'я';
+
+				return month;
+			}
 		}
 	}
 </script>
